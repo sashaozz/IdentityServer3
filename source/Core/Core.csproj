@@ -46,79 +46,66 @@
     <DocumentationFile>..\..\build\Thinktecture.IdentityServer.Core.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Autofac, Version=3.5.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
+    <Reference Include="Autofac">
+      <HintPath>..\..\..\Source\packages\Autofac.3.5.0\lib\net40\Autofac.dll</HintPath>
     </Reference>
-    <Reference Include="Autofac.Integration.WebApi, Version=3.4.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Autofac.WebApi2.3.4.0\lib\net45\Autofac.Integration.WebApi.dll</HintPath>
+    <Reference Include="Autofac.Integration.WebApi">
+      <HintPath>..\..\..\Source\packages\Autofac.WebApi2.3.4.0\lib\net45\Autofac.Integration.WebApi.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Microsoft.Owin, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\..\..\Source\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Owin.Cors, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Microsoft.Owin.Cors.3.0.1\lib\net45\Microsoft.Owin.Cors.dll</HintPath>
+    <Reference Include="Microsoft.Owin.Cors">
+      <HintPath>..\..\..\Source\packages\Microsoft.Owin.Cors.3.0.1\lib\net45\Microsoft.Owin.Cors.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Owin.FileSystems, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Microsoft.Owin.FileSystems.3.0.1\lib\net45\Microsoft.Owin.FileSystems.dll</HintPath>
+    <Reference Include="Microsoft.Owin.FileSystems">
+      <HintPath>..\..\..\Source\packages\Microsoft.Owin.FileSystems.3.0.1\lib\net45\Microsoft.Owin.FileSystems.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Owin.Security, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\..\..\Source\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Owin.Security.Cookies, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.3.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\..\..\Source\packages\Microsoft.Owin.Security.Cookies.3.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Owin.StaticFiles, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Microsoft.Owin.StaticFiles.3.0.1\lib\net45\Microsoft.Owin.StaticFiles.dll</HintPath>
+    <Reference Include="Microsoft.Owin.StaticFiles">
+      <HintPath>..\..\..\Source\packages\Microsoft.Owin.StaticFiles.3.0.1\lib\net45\Microsoft.Owin.StaticFiles.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\..\Source\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Owin">
-      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+      <HintPath>..\..\..\Source\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.IdentityModel" />
-    <Reference Include="System.IdentityModel.Tokens.Jwt, Version=4.0.2.28, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\System.IdentityModel.Tokens.Jwt.4.0.2.202250711\lib\net45\System.IdentityModel.Tokens.Jwt.dll</HintPath>
+    <Reference Include="System.IdentityModel.Tokens.Jwt">
+      <HintPath>..\..\..\Source\packages\System.IdentityModel.Tokens.Jwt.4.0.2.202250711\lib\net45\System.IdentityModel.Tokens.Jwt.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <HintPath>..\..\..\Source\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime.Caching" />
-    <Reference Include="System.Web.Cors, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Microsoft.AspNet.Cors.5.2.3\lib\net45\System.Web.Cors.dll</HintPath>
+    <Reference Include="System.Web.Cors">
+      <HintPath>..\..\..\Source\packages\Microsoft.AspNet.Cors.5.2.3\lib\net45\System.Web.Cors.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+      <HintPath>..\..\..\Source\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
     </Reference>
-    <Reference Include="System.Web.Http.Owin, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.Owin.5.2.3\lib\net45\System.Web.Http.Owin.dll</HintPath>
+    <Reference Include="System.Web.Http.Owin">
+      <HintPath>..\..\..\Source\packages\Microsoft.AspNet.WebApi.Owin.5.2.3\lib\net45\System.Web.Http.Owin.dll</HintPath>
     </Reference>
-    <Reference Include="System.Web.Http.Tracing, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.Tracing.5.2.3\lib\net45\System.Web.Http.Tracing.dll</HintPath>
+    <Reference Include="System.Web.Http.Tracing">
+      <HintPath>..\..\..\Source\packages\Microsoft.AspNet.WebApi.Tracing.5.2.3\lib\net45\System.Web.Http.Tracing.dll</HintPath>
     </Reference>
-    <Reference Include="Thinktecture.IdentityModel.Core, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Thinktecture.IdentityModel.Core.1.4.0\lib\net45\Thinktecture.IdentityModel.Core.dll</HintPath>
+    <Reference Include="System.Xml" />
+    <Reference Include="Thinktecture.IdentityModel.Core">
+      <HintPath>..\..\..\Source\packages\Thinktecture.IdentityModel.Core.1.4.0\lib\net45\Thinktecture.IdentityModel.Core.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -185,6 +172,10 @@
     <Compile Include="Extensions\IEventServiceExtensions.cs" />
     <Compile Include="Extensions\ILocalizationServiceExtensions.cs" />
     <Compile Include="Logging\LibLogTraceListener.cs" />
+    <Compile Include="Models\AuthenticateResponse\AuthErrorResponse.cs" />
+    <Compile Include="Models\AuthenticateResponse\RedirectToIdpResponse.cs" />
+    <Compile Include="Models\AuthenticateResponse\RenderLoginResponse.cs" />
+    <Compile Include="Models\AuthenticateResponse\AuthenticateResponse.cs" />
     <Compile Include="Models\ClientPermissionDescription.cs" />
     <Compile Include="Models\ClientSecret.cs" />
     <Compile Include="Models\AuthenticatedLogin.cs" />
@@ -197,11 +188,14 @@
       <DependentUpon>T4resx.tt</DependentUpon>
     </Compile>
     <Compile Include="Results\CheckSessionResult.cs" />
+    <Compile Include="Results\RedirectToIdpResult.cs" />
+    <Compile Include="Results\RenderLoginResult.cs" />
     <Compile Include="Results\RevocationErrorResult.cs" />
     <Compile Include="Results\WelcomeActionResult.cs" />
     <Compile Include="Services\Caching\CachingClientStore.cs" />
     <Compile Include="Services\Caching\CachingUserService.cs" />
     <Compile Include="Services\Caching\CachingScopeStore.cs" />
+    <Compile Include="Services\DefaultAuthenticationManager.cs" />
     <Compile Include="Services\DefaultViewService\DefaultViewServiceOptions.cs" />
     <Compile Include="Services\DefaultViewService\DefaultViewServiceRegistration.cs" />
     <Compile Include="Services\Default\DefaultCache.cs" />
@@ -212,6 +206,7 @@
     <Compile Include="Services\Default\EventServiceDecorator.cs" />
     <Compile Include="Services\Default\DefaultLocalizationService.cs" />
     <Compile Include="Services\Default\DefaultRedirectUriValidator.cs" />
+    <Compile Include="Services\IAuthenticationManager.cs" />
     <Compile Include="Services\ICache.cs" />
     <Compile Include="Services\IClientSecretValidator.cs" />
     <Compile Include="Services\ICorsPolicyService.cs" />
@@ -453,6 +448,7 @@
       <Link>default.licenseheader</Link>
     </None>
     <None Include="app.config" />
+    <None Include="packages.config" />
     <None Include="Resources\T4resx.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>T4resx.cs</LastGenOutput>
@@ -514,7 +510,6 @@
       <DependentUpon>scripts.min.js</DependentUpon>
     </None>
     <None Include="Services\DefaultViewService\HttpAssets\styles.css.bundle" />
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Services\DefaultViewService\PageAssets\welcome.html" />

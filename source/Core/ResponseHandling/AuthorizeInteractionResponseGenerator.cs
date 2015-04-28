@@ -63,6 +63,12 @@ namespace Thinktecture.IdentityServer.Core.ResponseHandling
                 _signIn.DisplayMode = request.DisplayMode;
             }
 
+            // pass through scopes to signin service
+            if (request.RequestedScopes.Any())
+            {
+                _signIn.RequestedScopes = request.RequestedScopes;
+            }
+
             // pass through ui locales to signin service
             if (request.UiLocales.IsPresent())
             {

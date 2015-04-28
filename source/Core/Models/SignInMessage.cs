@@ -93,6 +93,14 @@ namespace Thinktecture.IdentityServer.Core.Models
         public IEnumerable<string> AcrValues { get; set; }
 
         /// <summary>
+        /// List of scopes being requested.
+        /// </summary>
+        /// <value>
+        /// The identity scopes.
+        /// </value>
+        public IEnumerable<string> RequestedScopes { get; set; }
+        
+        /// <summary>
         /// Initializes a new instance of the <see cref="SignInMessage"/> class.
         /// </summary>
         public SignInMessage()

@@ -281,6 +281,12 @@ namespace Thinktecture.IdentityServer.Core.Configuration
         /// </value>
         public Registration<ICorsPolicyService> CorsPolicyService { get; set; }
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public Registration<IAuthenticationManager> AuthenticationManager { get; set; }
+
         internal void Validate()
         {
             if (UserService == null) LogAndStop("UserService not configured");

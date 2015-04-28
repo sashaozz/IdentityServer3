@@ -73,6 +73,7 @@ namespace Thinktecture.IdentityServer.Core.Configuration.Hosting
             builder.RegisterDefaultType<ILocalizationService, DefaultLocalizationService>(fact.LocalizationService);
             builder.RegisterDefaultType<IClientPermissionsService, DefaultClientPermissionsService>(fact.ClientPermissionsService);
             builder.RegisterDefaultType<IClientSecretValidator, HashedClientSecretValidator>(fact.ClientSecretValidator);
+            builder.RegisterDefaultType<IAuthenticationManager, DefaultAuthenticationManager>(fact.AuthenticationManager);
 
             if (fact.ViewService == null)
             {
