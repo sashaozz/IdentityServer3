@@ -34,6 +34,20 @@ namespace Thinktecture.IdentityServer.Core.Extensions
     public static class OwinExtensions
     {
         /// <summary>
+        /// Gets the public host name for SignInMessage.
+        /// </summary>
+        /// <param name="env">The env.</param>
+        /// <param name="signin">The signin.</param>
+        /// <returns></returns>
+        public static SignInMessage GetSignInMessage(this IDictionary<string, object> env, string signin)
+        {
+            var options = env.ResolveDependency<IdentityServerOptions>();
+            var signInMessageCookie = new MessageCookie<SignInMessage>(env, options);
+
+            return signInMessageCookie.Read(signin);
+        }
+
+        /// <summary>
         /// Gets the public host name for IdentityServer.
         /// </summary>
         /// <param name="env">The env.</param>
