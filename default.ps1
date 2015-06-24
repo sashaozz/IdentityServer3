@@ -70,6 +70,7 @@ task ILMerge -depends Compile {
 }
 
 task CreateNuGetPackage -depends ILMerge {
+	exec {gitlink $base_directory -u https://github.com/sashaozz/IdentityServer3}
 	$vSplit = $version.Split('.')
 	if($vSplit.Length -ne 4)
 	{
