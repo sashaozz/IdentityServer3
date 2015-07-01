@@ -160,6 +160,12 @@
     <Compile Include="Internal\AntiXssLibrary\CodeCharts.cs" />
     <Compile Include="Internal\AntiXssLibrary\Encoder.cs" />
     <Compile Include="Internal\AntiXssLibrary\Utf16StringReader.cs" />
+    <Compile Include="Internal\Autofac.Integration.Owin\AutofacAppBuilderExtensions.cs" />
+    <Compile Include="Internal\Autofac.Integration.Owin\AutofacMiddleware.cs" />
+    <Compile Include="Internal\Autofac.Integration.Owin\Constants.cs" />
+    <Compile Include="Internal\Autofac.Integration.Owin\OwinContextExtensions.cs" />
+    <Compile Include="Internal\Autofac.Integration.WebApi.Owin\AutofacWebApiAppBuilderExtensions.cs" />
+    <Compile Include="Internal\Autofac.Integration.WebApi.Owin\DependencyScopeHandler.cs" />
     <Compile Include="Logging\RequestResponseLogger.cs" />
     <Compile Include="Configuration\LoginPageLink.cs" />
     <Compile Include="Events\Base\EventContext.cs" />
@@ -334,13 +340,11 @@
     <Compile Include="Services\IRefreshTokenStore.cs" />
     <Compile Include="Services\Default\DefaultTokenSigningService.cs" />
     <Compile Include="Services\ITokenSigningService.cs" />
-    <Compile Include="Configuration\Hosting\AutofacContainerMiddleware.cs" />
     <Compile Include="Configuration\Hosting\AutofacScope.cs" />
     <Compile Include="Configuration\Hosting\HostDataProtector.cs" />
     <Compile Include="Configuration\IDataProtector.cs" />
     <Compile Include="Configuration\IdentityServerOptions.cs" />
     <Compile Include="Configuration\IdentityServerServiceFactory.cs" />
-    <Compile Include="Configuration\Hosting\KatanaDependencyResolver.cs" />
     <Compile Include="Configuration\Hosting\WebApiConfig.cs" />
     <Compile Include="Endpoints\Connect\AccessTokenValidationController.cs" />
     <Compile Include="Endpoints\Connect\DiscoveryEndpointController.cs" />

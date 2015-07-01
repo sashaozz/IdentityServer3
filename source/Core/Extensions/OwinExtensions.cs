@@ -15,6 +15,7 @@
  */
 
 using Autofac;
+using Autofac.Integration.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using System;
@@ -33,19 +34,6 @@ namespace Thinktecture.IdentityServer.Core.Extensions
     /// </summary>
     public static class OwinExtensions
     {
-        /// <summary>
-        /// Gets the public host name for SignInMessage.
-        /// </summary>
-        /// <param name="env">The env.</param>
-        /// <param name="signin">The signin.</param>
-        /// <returns></returns>
-        public static SignInMessage GetSignInMessage(this IDictionary<string, object> env, string signin)
-        {
-            var options = env.ResolveDependency<IdentityServerOptions>();
-            var signInMessageCookie = new MessageCookie<SignInMessage>(env, options);
-
-            return signInMessageCookie.Read(signin);
-        }
 
         /// <summary>
         /// Gets the public host name for IdentityServer.
@@ -189,6 +177,28 @@ namespace Thinktecture.IdentityServer.Core.Extensions
         }
 
         /// <summary>
+        /// Gets the sign in message.
+        /// </summary>
+        /// <param name="env">The OWIN environment.</param>
+        /// <param name="id">The signin identifier.</param>
+        /// <returns></returns>
+        /// <exception cref="System.ArgumentNullException">
+        /// env
+        /// or
+        /// id
+        /// </exception>
+        public static SignInMessage GetSignInMessage(this IDictionary<string, object> env, string id)
+        {
+            if (env == null) throw new ArgumentNullException("env");
+            if (string.IsNullOrEmpty(id)) throw new ArgumentNullException("id");
+
+            var options = env.ResolveDependency<IdentityServerOptions>();
+            var cookie = new MessageCookie<SignInMessage>(env, options);
+
+            return cookie.Read(id);
+        }
+
+        /// <summary>
         /// Gets the current request identifier.
         /// </summary>
         /// <param name="env">The OWIN environment.</param>
@@ -228,12 +238,7 @@ namespace Thinktecture.IdentityServer.Core.Extensions
 
         internal static ILifetimeScope GetLifetimeScope(this IDictionary<string, object> env)
         {
-            return new OwinContext(env).Get<ILifetimeScope>(Constants.OwinEnvironment.AutofacScope);
-        }
-
-        internal static void SetLifetimeScope(this IDictionary<string, object> env, ILifetimeScope scope)
-        {
-            new OwinContext(env).Set(Constants.OwinEnvironment.AutofacScope, scope);
+            return new OwinContext(env).GetAutofacLifetimeScope();
         }
 
         internal static T ResolveDependency<T>(this IDictionary<string, object> env)
