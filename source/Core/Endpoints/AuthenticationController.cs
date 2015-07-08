@@ -326,11 +326,18 @@ namespace Thinktecture.IdentityServer.Core.Endpoints
 			{
 				return RenderErrorPage((response as AuthErrorResponse).Message);
 			}
-		    if (response is RedirectToIdpResponse)
+		    
+            if (response is RedirectToIdpResponse)
 		    {
 		        var redirect = response as RedirectToIdpResponse;
                 return Redirect(context.GetExternalProviderLoginUrl(redirect.IdP, redirect.Signin));
-		    }
+            }
+
+            if (response is RedirectResponse)
+            {
+                var redirect = response as RedirectResponse;
+                return Redirect(redirect.RedirectPath);
+            }
 
 			return null;
 		}

@@ -180,6 +180,7 @@
     <Compile Include="Extensions\ILocalizationServiceExtensions.cs" />
     <Compile Include="Logging\LibLogTraceListener.cs" />
     <Compile Include="Models\AuthenticateResponse\AuthErrorResponse.cs" />
+    <Compile Include="Models\AuthenticateResponse\RedirectResponse.cs" />
     <Compile Include="Models\AuthenticateResponse\RedirectToIdpResponse.cs" />
     <Compile Include="Models\AuthenticateResponse\RenderLoginResponse.cs" />
     <Compile Include="Models\AuthenticateResponse\AuthenticateResponse.cs" />
