@@ -411,7 +411,21 @@ namespace Thinktecture.IdentityServer.Core.Endpoints
 
             Logger.InfoFormat("external user provider: {0}, provider ID: {1}", externalIdentity.Provider, externalIdentity.ProviderId);
 
-            var authResult = await userService.AuthenticateExternalAsync(externalIdentity, signInMessage);
+            AuthenticateResult authResult = null;
+            try
+            {
+                authResult = await userService.AuthenticateExternalAsync(externalIdentity, signInMessage);
+            }
+            catch (Exception ex)
+            {
+                if (!returnUnsuccessfulResult)
+                {
+                    throw ex;
+                }
+
+                return AuthorizeError(Constants.AuthorizeErrors.LoginRequired, signInMessage, options);
+            }
+
             if (authResult == null)
             {
                 Logger.Warn("user service failed to authenticate external identity");
@@ -973,12 +987,12 @@ namespace Thinktecture.IdentityServer.Core.Endpoints
             var redirectUri = authQuery.ParseQueryString()["redirect_uri"];
             var state = authQuery.ParseQueryString()["state"];
             var responseMode = authQuery.ParseQueryString()["response_mode"] ?? "";
-            
+
             Logger.InfoFormat("authQuery: {0}", authQuery);
             Logger.InfoFormat("redirectUri: {0}", redirectUri);
             Logger.InfoFormat("state: {0}", state);
             Logger.InfoFormat("responseMode: {0}", responseMode);
-            
+
             //RaiseFailureEvent(error);
             var request = new ValidatedAuthorizeRequest
             {
