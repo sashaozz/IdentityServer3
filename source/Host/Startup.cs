@@ -65,7 +65,7 @@ namespace Thinktecture.IdentityServer.Host
 
                         AuthenticationOptions = new AuthenticationOptions 
                         {
-                            IdentityProviders = ConfigureIdentityProviders,
+                            IdentityProviders = ConfigureIdentityProviders
                         },
 
                         LoggingOptions = new LoggingOptions

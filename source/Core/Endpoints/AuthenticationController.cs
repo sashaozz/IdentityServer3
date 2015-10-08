@@ -141,7 +141,21 @@ namespace Thinktecture.IdentityServer.Core.Endpoints
 
                 eventService.RaisePreLoginSuccessEvent(signin, signInMessage, authResult);
 
-                return SignInAndRedirect(signInMessage, signin, authResult);
+                var rememberMe = false;
+                if (options.AuthenticationOptions.CookieOptions.AllowRememberMe)
+                {
+                    Logger.Info("Try get AcrValue fpcc-remember_me");
+                    string rememberMeAcrValue;
+                    if (signInMessage.TryGetAcrValue("fpcc-remember_me", out rememberMeAcrValue))
+                    {
+                        Logger.Info(string.Format("The result of the attempt to take the value fpcc-remember_me: {0}", rememberMeAcrValue));
+
+                        bool.TryParse(rememberMeAcrValue, out rememberMe);
+                    }
+                }
+
+                return SignInAndRedirect(signInMessage, signin, authResult, 
+                    options.AuthenticationOptions.CookieOptions.AllowRememberMe ? rememberMe : (bool?)null);
             }
 
             if (signInMessage.IdP.IsPresent())
@@ -725,9 +739,28 @@ namespace Thinktecture.IdentityServer.Core.Endpoints
                 var resumeLoginClaim = new Claim(Constants.ClaimTypes.PartialLoginReturnUrl, resumeLoginUrl);
                 id.AddClaim(resumeLoginClaim);
                 id.AddClaim(new Claim(GetClaimTypeForResumeId(resumeId), signInMessageId));
+
+                if (rememberMe.HasValue)
+                {
+                    Logger.Info("IssueAuthenticationCookie issuing rememberMe.Value" + rememberMe.Value);
+                    id.AddClaim(new Claim(Constants.ClaimTypes.PartialRememberMe, rememberMe.Value.ToString()));
+                }
             }
             else
             {
+                var rememberMeClaim = id.Claims.FirstOrDefault(c => c.Type == Constants.ClaimTypes.PartialRememberMe);
+
+                if (rememberMeClaim != null)
+                {
+                    Logger.Info("IssueAuthenticationCookie rememberMeClaim != null");
+                    Logger.Info("IssueAuthenticationCookie rememberMeClaim.val " + rememberMeClaim);
+                    var rememberMeParseResult = false;
+                    if (bool.TryParse(rememberMeClaim.Value, out rememberMeParseResult))
+                    {
+                        rememberMe = rememberMeParseResult;
+                    }
+                }
+
                 signInMessageCookie.Clear(signInMessageId);
                 sessionCookie.IssueSessionId(rememberMe);
             }
@@ -806,7 +839,7 @@ namespace Thinktecture.IdentityServer.Core.Endpoints
 
 
 
-        private async Task<IHttpActionResult> RenderLoginPage(SignInMessage message, string signInMessageId, string errorMessage = null, string username = null, bool rememberMe = false)
+        private async Task<IHttpActionResult> RenderLoginPage(SignInMessage message, string signInMessageId, string errorMessage = null, string username = null, bool? rememberMe = null)
         {
             if (message == null) throw new ArgumentNullException("message");
 
@@ -867,6 +900,14 @@ namespace Thinktecture.IdentityServer.Core.Endpoints
 
             var loginPageLinks = options.AuthenticationOptions.LoginPageLinks.Render(Request.GetIdentityServerBaseUrl(), signInMessageId);
 
+            var rememberMeAcrValue = "";
+            if (!rememberMe.HasValue && message.TryGetAcrValue("fpcc-remember_me", out rememberMeAcrValue))
+            {
+                bool parseResilt;
+                bool.TryParse(rememberMeAcrValue, out parseResilt);
+                rememberMe = parseResilt;
+            }
+
             var loginModel = new LoginViewModel
             {
                 RequestId = context.GetRequestId(),
@@ -877,7 +918,7 @@ namespace Thinktecture.IdentityServer.Core.Endpoints
                 ErrorMessage = errorMessage,
                 LoginUrl = isLocalLoginAllowed ? Url.Route(Constants.RouteNames.Login, new { signin = signInMessageId }) : null,
                 AllowRememberMe = options.AuthenticationOptions.CookieOptions.AllowRememberMe,
-                RememberMe = options.AuthenticationOptions.CookieOptions.AllowRememberMe && rememberMe,
+                RememberMe = options.AuthenticationOptions.CookieOptions.AllowRememberMe && (rememberMe ?? false),
                 CurrentUser = context.GetCurrentUserDisplayName(),
                 LogoutUrl = context.GetIdentityServerLogoutUrl(),
                 AntiForgery = antiForgeryToken.GetAntiForgeryToken(),
