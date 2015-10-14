@@ -223,6 +223,8 @@
     <Compile Include="Services\ILocalizationService.cs" />
     <Compile Include="Services\InMemory\InMemoryCorsPolicyService.cs" />
     <Compile Include="Services\IRedirectUriValidator.cs" />
+    <Compile Include="Services\DefaultSsoCheckService.cs" />
+    <Compile Include="Services\ISsoCheckService.cs" />
     <Compile Include="Services\OwinEnvironmentService.cs" />
     <Compile Include="Validation\AuthorizeRequestValidationResult.cs" />
     <Compile Include="Validation\BearerTokenUsageType.cs" />

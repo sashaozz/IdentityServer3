@@ -39,12 +39,14 @@ namespace Thinktecture.IdentityServer.Core.ResponseHandling
         private readonly ITokenService _tokenService;
         private readonly IAuthorizationCodeStore _authorizationCodes;
         private readonly IEventService _events;
+        private readonly ISsoCheckService _ssoCheckService;
 
-        public AuthorizeResponseGenerator(ITokenService tokenService, IAuthorizationCodeStore authorizationCodes, IEventService events)
+        public AuthorizeResponseGenerator(ITokenService tokenService, IAuthorizationCodeStore authorizationCodes, IEventService events, ISsoCheckService ssoCheckService)
         {
             _tokenService = tokenService;
             _authorizationCodes = authorizationCodes;
             _events = events;
+            _ssoCheckService = ssoCheckService;
         }
 
         public async Task<AuthorizeResponse> CreateResponseAsync(ValidatedAuthorizeRequest request)
@@ -178,6 +180,7 @@ namespace Thinktecture.IdentityServer.Core.ResponseHandling
                 IdentityToken = jwt,
                 State = request.State,
                 Scope = request.ValidatedScopes.GrantedScopes.ToSpaceSeparatedString(),
+                NeedSetSsoCookieAsync = await _ssoCheckService.NeedSetSsoCookieAsync()
             };
 
             if (request.IsOpenIdRequest)

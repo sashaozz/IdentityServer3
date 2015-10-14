@@ -33,6 +33,7 @@ namespace Thinktecture.IdentityServer.Core.Models
         public string State { get; set; }
         public string Scope { get; set; }
         public string SessionState { get; set; }
+        public bool NeedSetSsoCookieAsync { get; set; }
 
         public string Error { get; set; }
         public bool IsError { get; set; }

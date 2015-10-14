@@ -67,6 +67,8 @@ namespace Thinktecture.IdentityServer.Core.Extensions
                 collection.Add("session_state", response.SessionState);
             }
 
+            collection.Add("need_set_sso_cookie", response.NeedSetSsoCookieAsync.ToString());
+
             return collection;
         }
     }

@@ -74,6 +74,7 @@ namespace Thinktecture.IdentityServer.Core.Configuration.Hosting
             builder.RegisterDefaultType<IClientPermissionsService, DefaultClientPermissionsService>(fact.ClientPermissionsService);
             builder.RegisterDefaultType<IClientSecretValidator, HashedClientSecretValidator>(fact.ClientSecretValidator);
             builder.RegisterDefaultType<IAuthenticationManager, DefaultAuthenticationManager>(fact.AuthenticationManager);
+            builder.RegisterDefaultType<ISsoCheckService, DefaultSsoCheckService>(fact.SsoCheckService);
 
             if (fact.ViewService == null)
             {

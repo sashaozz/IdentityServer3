@@ -286,6 +286,11 @@ namespace Thinktecture.IdentityServer.Core.Configuration
         /// 
         /// </summary>
         public Registration<IAuthenticationManager> AuthenticationManager { get; set; }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public Registration<ISsoCheckService> SsoCheckService { get; set; }
 
         internal void Validate()
         {
