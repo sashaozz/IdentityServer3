@@ -4,13 +4,35 @@
  */
 
 (function () {
+    var httpRequest;
+    function alertContents() {
+        if (httpRequest.readyState === XMLHttpRequest.DONE) {
+            document.forms[0].submit();
+        }
+    }
+
+    function writeToLogAndSendData() {
+        var url = "/identity/FinishAuth";
+
+        httpRequest = new XMLHttpRequest();
+
+        if (!httpRequest) {
+            alert('Giving up :( Cannot create an XMLHTTP instance');
+            return false;
+        }
+        httpRequest.onreadystatechange = alertContents;
+        httpRequest.open('GET', url);
+        httpRequest.send();
+    }
 
     function submitResult(needSetSsoCookieInput, timerReplace) {
         if (needSetSsoCookieInput != null) {
             needSetSsoCookieInput.parentNode.removeChild(needSetSsoCookieInput);
         }
+
         clearTimeout(timerReplace);
-        document.forms[0].submit();
+
+        writeToLogAndSendData();
     }
 
     var needSetSsoCookieInput = document.getElementsByName("need_set_sso_cookie")[0];
